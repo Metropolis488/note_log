@@ -18,21 +18,23 @@ router.get("/notes", function (req, res) {
 router.post("/notes", function (req, res) {
     const notes = getDB();
     const newNote = req.body;
-
+ 
     // assign newNote and id!
-    newNote.id = '?'
+    newNote.id = notes.length +1;
     
     notes.push(newNote)
     setDB(notes)
 
-    res.json(newNote);
+    res.json(newNote.id);
+    getDB();
 })
 
 router.delete("/notes/:id", function(req, res){
     const notes = getDB();
     const id = req.params.id;
     
-    // remove note with matching id    
+    // remove note with matching id
+    
     
     setDB(notes);
     res.json(newNote);
