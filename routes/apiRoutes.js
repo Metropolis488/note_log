@@ -34,10 +34,14 @@ router.delete("/notes/:id", function(req, res){
     const id = req.params.id;
     
     // remove note with matching id
-    
-    
+    for (var i = 0; i < notes.length; i++) {
+        if (id == notes[i].id) {
+            notes.splice(i, 1);
+        }
+    }
+    console.log(id);
     setDB(notes);
-    res.json(newNote);
+    res.json(notes);
 })
 
 module.exports = router;
